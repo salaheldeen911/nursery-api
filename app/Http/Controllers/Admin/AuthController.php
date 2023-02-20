@@ -4,16 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegisterRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
-    public function login(LoginRequest $request)
+    public function login(LoginRequest $request): JsonResponse
     {
         try {
             $validated = $request->validated();
@@ -32,20 +31,20 @@ class AuthController extends Controller
 
             return $this->_response(self::SUCCESS, "loged in successfully", new UserResource($user));
         } catch (\Exception $e) {
-            Log::error("error while user loging in", ['error_msg' => $e->getMessage(), "trace" => $e->getTraceAsString()]);
+            Log::error("error while user loging in", ['error_msg' => $e->getMessage() . "in line: " . $e->getLine(), "trace" => $e->getTraceAsString()]);
 
             return $this->_response(self::FAILED, 'Some error occurred while Loging in');
         }
     }
 
-    public function logout()
+    public function logout(): JsonResponse
     {
         try {
             auth('sanctum')->user()->tokens()->delete();
 
             return $this->_response(self::SUCCESS, "loged out successfully");
         } catch (\Exception $e) {
-            Log::error("error while loging out", ['error_msg' => $e->getMessage(), "trace" => $e->getTraceAsString()]);
+            Log::error("error while loging out", ['error_msg' => $e->getMessage() . "in line: " . $e->getLine(), "trace" => $e->getTraceAsString()]);
 
             return $this->_response(self::FAILED, 'Some error occurred while Loging out');
         }
