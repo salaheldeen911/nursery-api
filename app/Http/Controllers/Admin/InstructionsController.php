@@ -31,8 +31,6 @@ class InstructionsController extends Controller
      */
     public function store(InstructionRequest $request): JsonResponse
     {
-        return $this->_response(self::FAILED, 'No instruction was found with id: ', $request->toArray());
-
         try {
             $instruction = Instruction::create($request->validated());
 
@@ -65,9 +63,8 @@ class InstructionsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id): JsonResponse
+    public function update(InstructionRequest $request, string $id): JsonResponse
     {
-        return $this->_response(self::FAILED, 'No instruction was found with id: ' . $id, $request->all());
         try {
             $instruction = Instruction::find($id);
             if (!$instruction) {
