@@ -70,9 +70,9 @@ class InstructionsController extends Controller
             if (!$instruction) {
                 return $this->_response(self::FAILED, 'No instruction was found with id: ' . $id);
             }
-            $updatedInstruction = $instruction->update($request->validated());
+            $instruction->update($request->validated());
 
-            return $this->_response(self::SUCCESS, "updated", new InstructionResource($updatedInstruction));
+            return $this->_response(self::SUCCESS, "instruction with id: $id has been deleted successfully", new InstructionResource($instruction));
         } catch (\Exception $e) {
             Log::error("error while storing an instruction", ['error_msg' => $e->getMessage() . "in line: " . $e->getLine(), "trace" => $e->getTraceAsString()]);
 
