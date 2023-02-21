@@ -71,14 +71,4 @@ class AuthController extends Controller
             return $this->_response(self::FAILED, 'Some error occurred while Loging out');
         }
     }
-
-    // public function checkAuthentication()
-    // {
-    //     if (auth('sanctum')->check()) {
-    // $user = auth('sanctum')->user()->with('roles');
-    //         return response()->json(["status" => auth('sanctum')->user()]);
-    //     }
-
-    //     return response()->json(["status" => false]);
-    // }
 }
