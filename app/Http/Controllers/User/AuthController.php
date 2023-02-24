@@ -26,7 +26,7 @@ class AuthController extends Controller
 
             $token = $user->createToken("token")->plainTextToken;
 
-            return $this->_response(self::SUCCESS, "registered successfully", ["user" => new UserResource($user), "token" => $token]);
+            return $this->_response(self::SUCCESS, "registered successfully", ["user" => new UserResource($user->with('roles')), "token" => $token]);
         } catch (\Exception $e) {
             Log::error("error while user registring", ['error_msg' => $e->getMessage() . "in line: " . $e->getLine(), "trace" => $e->getTraceAsString()]);
 
