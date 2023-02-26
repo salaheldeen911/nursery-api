@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('suggestions', function (Blueprint $table) {
             $table->id();
-            $table->text('body');
+            $table->text('suggestion');
             $table->unsignedBigInteger("user_id");
             $table->foreign("user_id")
                 ->references("id")
