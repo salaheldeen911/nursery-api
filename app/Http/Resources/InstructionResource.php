@@ -16,7 +16,7 @@ class InstructionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'body' => $this->body,
+            'instruction' => $this->instruction,
         ];
     }
 }
