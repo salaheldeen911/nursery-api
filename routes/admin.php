@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\GuidanceController;
 use App\Http\Controllers\Admin\InstructionsController;
 use App\Http\Controllers\SuggestionController;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +15,10 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
         Route::apiResource('inetructions', InstructionsController::class);
-        Route::apiResource('suggestions', SuggestionController::class)->except(['store', 'update', 'show']);
+
+        Route::get('suggestions', [SuggestionController::class, "index"]);
+        Route::delete('suggestions/{suggestion}', [SuggestionController::class, "destroy"]);
+
+        Route::apiResource('guidances', GuidanceController::class);
     });
 });

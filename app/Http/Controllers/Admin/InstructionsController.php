@@ -72,11 +72,11 @@ class InstructionsController extends Controller
             }
             $instruction->update($request->validated());
 
-            return $this->_response(self::SUCCESS, "instruction with id: $id has been deleted successfully", new InstructionResource($instruction));
+            return $this->_response(self::SUCCESS, "instruction with id: $id has been updated successfully", new InstructionResource($instruction));
         } catch (\Exception $e) {
-            Log::error("error while storing an instruction", ['error_msg' => $e->getMessage() . "in line: " . $e->getLine(), "trace" => $e->getTraceAsString()]);
+            Log::error("error while updating an instruction", ['error_msg' => $e->getMessage() . "in line: " . $e->getLine(), "trace" => $e->getTraceAsString()]);
 
-            return $this->_response(self::FAILED, 'Some error occurred while storing an instruction');
+            return $this->_response(self::FAILED, 'Some error occurred while updating an instruction');
         }
     }
 
@@ -94,9 +94,9 @@ class InstructionsController extends Controller
 
             return $this->_response(self::SUCCESS, "instruction with id: $id has been deleted successfully");
         } catch (\Exception $e) {
-            Log::error("error while showing an instruction", ['error_msg' => $e->getMessage() . "in line: " . $e->getLine(), "trace" => $e->getTraceAsString()]);
+            Log::error("error while deleting an instruction", ['error_msg' => $e->getMessage() . "in line: " . $e->getLine(), "trace" => $e->getTraceAsString()]);
 
-            return $this->_response(self::FAILED, 'Some error occurred while showing an instruction');
+            return $this->_response(self::FAILED, 'Some error occurred while deleting an instruction');
         }
     }
 }
