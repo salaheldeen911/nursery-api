@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\GuidanceController;
 use App\Http\Controllers\Admin\InstructionsController;
-use App\Http\Controllers\SuggestionController;
+use App\Http\Controllers\Admin\SuggestionController;
 use Illuminate\Support\Facades\Route;
 
 

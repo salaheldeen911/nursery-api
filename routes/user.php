@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\User\AuthController;
-use App\Http\Controllers\SuggestionController;
 use App\Http\Controllers\User\InstructionController;
+use App\Http\Controllers\User\SuggestionController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
