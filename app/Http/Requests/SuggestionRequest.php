@@ -22,7 +22,7 @@ class SuggestionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "suggestion" => "required|max:265|alpha:ascii",
+            "suggestion" => "required|string",
         ];
     }
 }

@@ -22,7 +22,7 @@ class InstructionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "instruction" => "required|alpha:ascii",
+            "instruction" => "required|string",
         ];
     }
 }
